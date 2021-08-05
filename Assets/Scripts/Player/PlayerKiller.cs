@@ -2,17 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerCheker : MonoBehaviour
+public class PlayerKiller : MonoBehaviour
 {
-    private Animator _playerAnimator;
+    [SerializeField] private EnemyCheker _enemyCheker;
+    [SerializeField] private Player _player;
+    [SerializeField] private Animator _playerAnimator;
+
     private float _delay = 0.1f;
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void Update()
     {
-        if (collision.TryGetComponent<Player>(out Player player))
+        if (_enemyCheker.IsTouched)
         {
-            _playerAnimator = collision.GetComponent<Animator>();
-            StartCoroutine(PlayerDead(player));
+            StartCoroutine(PlayerDead(_player));
         }
     }
 

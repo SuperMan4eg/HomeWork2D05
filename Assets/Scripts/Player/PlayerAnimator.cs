@@ -32,7 +32,9 @@ public class PlayerAnimator : MonoBehaviour
                 _renderer.flipX = true;
             }
             else
+            {
                 _renderer.flipX = false;
+            }
         }
         else
         {

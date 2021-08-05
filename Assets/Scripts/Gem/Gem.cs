@@ -5,7 +5,9 @@ using UnityEngine;
 public class Gem : MonoBehaviour
 {
     [SerializeField] Animator _animator;
+
     private int _amount = 1;
+    private float _dalay = 0.2f;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -17,12 +19,11 @@ public class Gem : MonoBehaviour
 
     private IEnumerator GettingGem(Player player)
     {
-        player.GettingGem(_amount);
+        player.CollectGem(_amount);
 
         _animator.SetTrigger("IsGetting");
 
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(_dalay);
         Destroy(gameObject);
-
     }
 }

@@ -7,8 +7,8 @@ using UnityEngine;
 public class EnemyMover : MonoBehaviour
 {
     [SerializeField] private float _speed = 2.5f;
-    [SerializeField] private Transform _point1;
-    [SerializeField] private Transform _point2;
+    [SerializeField] private Transform _pointStart;
+    [SerializeField] private Transform _pointEnd;
 
     private Rigidbody2D _rigidBody;
     private Transform _transform;
@@ -22,11 +22,11 @@ public class EnemyMover : MonoBehaviour
 
     private void Update()
     {
-        if (_transform.position.x <= _point2.position.x)
+        if (_transform.position.x <= _pointEnd.position.x)
         {
             _onRight = true;
         }
-        if (_transform.position.x >= _point1.position.x)
+        if (_transform.position.x >= _pointStart.position.x)
         {
             _onRight = false;
         }
