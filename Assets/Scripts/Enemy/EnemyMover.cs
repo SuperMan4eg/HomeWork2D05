@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
-[RequireComponent(typeof(Transform))]
 public class EnemyMover : MonoBehaviour
 {
     [SerializeField] private float _speed = 2.5f;
@@ -11,22 +10,20 @@ public class EnemyMover : MonoBehaviour
     [SerializeField] private Transform _pointEnd;
 
     private Rigidbody2D _rigidBody;
-    private Transform _transform;
     private bool _onRight;
 
     private void Start()
     {
         _rigidBody = GetComponent<Rigidbody2D>();
-        _transform = GetComponent<Transform>();
     }
 
     private void Update()
     {
-        if (_transform.position.x <= _pointEnd.position.x)
+        if (transform.position.x <= _pointEnd.position.x)
         {
             _onRight = true;
         }
-        if (_transform.position.x >= _pointStart.position.x)
+        if (transform.position.x >= _pointStart.position.x)
         {
             _onRight = false;
         }

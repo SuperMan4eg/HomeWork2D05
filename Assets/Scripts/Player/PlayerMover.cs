@@ -8,7 +8,6 @@ public class PlayerMover : MonoBehaviour
     [SerializeField] private float _jumpForce;
 
     private Rigidbody2D _rigitBody2D;
-    private bool _grounded;
 
     private void Start()
     {
@@ -16,8 +15,6 @@ public class PlayerMover : MonoBehaviour
     }
     private void Update()
     {
-        _grounded = _groundCheker.IsGrounded;
-
         if (Input.GetKey(KeyCode.D))
         {
             transform.Translate(_speed * Time.deltaTime, 0, 0);
@@ -28,7 +25,7 @@ public class PlayerMover : MonoBehaviour
             transform.Translate(-_speed * Time.deltaTime, 0, 0);
         }
 
-        if (Input.GetKey(KeyCode.Space) && _grounded)
+        if (Input.GetKey(KeyCode.Space) && _groundCheker.IsGrounded)
         {
             _rigitBody2D.velocity = (Vector2.up * _jumpForce);
         }
